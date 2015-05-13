@@ -1,0 +1,18 @@
+.row
+	aside.col-md-4
+		h2 Favourites
+	main.col-md-8
+		h1 Search
+		form(ng-submit="search(query)")
+			.form-group
+				input.form-control(type="search", placeholder="Search...", ng-model="query", 
+					ng-model-options="{debounce: {default: 500, blur: 0}, updateOn: 'default blur'}")
+
+		ul.list-unstyled.row.albums
+			li.album.col-md-4(ng-repeat="album in albums | orderBy:'name' | paginate:page:6") 
+				img.img-responsive.img-rounded(ng-src="{{album.images[1].url}}")
+				h4 {{album.name}}
+
+		pagination(ng-model="page", total-items="albums.length", items-per-page="6" ng-init="page=1")
+
+		p(ng-show="albums.length===0") No results found.
