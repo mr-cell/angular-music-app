@@ -17,6 +17,11 @@ angular.module('musicApp', ['ngAnimate', 'ngCookies', 'ngSanitize', 'ui.router',
                 url: '/albums',
                 templateUrl: 'app/albums/albums.html',
                 controller: 'AlbumsController'
+            })
+            .state('album', {
+                url: 'albums/:id',
+                templateUrl: 'app/albums/album.html',
+                controller: 'AlbumController'
             });
 
         $urlRouterProvider.otherwise('/');

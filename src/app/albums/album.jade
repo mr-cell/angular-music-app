@@ -1,0 +1,8 @@
+h1 {{album.name}} - Album Details
+.row
+	.col-md-4
+		spotify-poster(album="album", size="lg")
+	.col-md-8
+		ul.list-group
+			li.list-group-item(ng-repeat="track in album.tracks.items") {{ track.name }}
+pre {{album | json}}

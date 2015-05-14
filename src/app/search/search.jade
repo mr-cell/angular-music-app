@@ -17,10 +17,7 @@
 						input.form-control(type="search", ng-model="filterQuery.name")
 		ul.list-unstyled.row.albums
 			li.album.col-md-4(ng-repeat="album in filteredAlbums = (albums | filter:filterQuery | orderBy:'name':order) | paginate:page:6") 
-				spotify-poster.img-rounded(size="md", album="album")
-				h4
-					bookmarks-stars(bookmark="album")
-					{{album.name}}
+				spotify-poster.img-rounded(size="md", album="album") {{album.name}}
 
 		pagination(ng-model="page", ng-hide="filteredAlbums.length===0", total-items="filteredAlbums.length", items-per-page="6" ng-init="page=1")
 

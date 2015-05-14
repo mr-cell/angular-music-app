@@ -1,4 +1,6 @@
-figure(ng-click="removeBookmark(album)")
+figure
 	img.img-responsive.img-rounded(ng-src="{{ src }}")
 	figcaption
-		ng-transclude
+		h4
+			bookmarks-stars(bookmark="album")
+			ng-transclude
