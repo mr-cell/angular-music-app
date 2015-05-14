@@ -1,10 +1,12 @@
 div(ng-controller="BookmarksController")
 		h2 Favourites
-		table.table.table-condensed.table-responsive
+		table.table.table-condensed.table-responsive.table-unstyled
 			thead
 			tbody
-				tr(ng-repeat="album in getBookmarks()")
-					td {{album.name}}
+				tr(ng-repeat="bookmark in getBookmarks()")
+					td
+						spotify-poster(size="sm", album="bookmark") {{bookmark.type}}
+					td {{bookmark.name}}
 					td
 						button.btn.btn-default.btn-xs(ng-click="removeBookmark(album.id)")
 							span.glyphicon.glyphicon-minus

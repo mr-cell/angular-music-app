@@ -11,7 +11,7 @@ angular.module('bookmarks')
 	}
 
 	function add(item) {
-		if(!has(item.id)) {
+		if (!has(item.id)) {
 			items.push(item);
 			persist(items);
 		}
@@ -35,7 +35,7 @@ angular.module('bookmarks')
 	}
 
 	function has(id) {
-		return  items.some(function(item) {
+		return items.some(function(item) {
 			return item.id === id;
 		});
 	}

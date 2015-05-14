@@ -10,17 +10,15 @@
 				.row.form-inline
 					.col-md-6
 						input(type="checkbox" ng-model="order", id="order")
-						label(for="order", ng-show="order") Sortuj malejąco
-						label(for="order", ng-hide="order") Sortuj rosnąco
+						label(for="order", ng-show="order") Order desc
+						label(for="order", ng-hide="order") Order asc
 					.col-md-6.form-group
-						label Filtruj:
+						label Filter:
 						input.form-control(type="search", ng-model="filterQuery.name")
-
-		h4 {{filterQuery}}
 		ul.list-unstyled.row.albums
 			li.album.col-md-4(ng-repeat="album in filteredAlbums = (albums | filter:filterQuery | orderBy:'name':order) | paginate:page:6", 
 				ng-click="isBookmarked(album) ? removeBookmark(album.id) : saveBookmark(album)") 
-				img.img-responsive.img-rounded(ng-src="{{album.images[1].url}}")
+				spotify-poster.img-rounded(size="md", album="album")
 				h4
 					span.glyphicon.glyphicon-star(ng-show="isBookmarked(album)")
 					span.glyphicon.glyphicon-star-empty(ng-show="!isBookmarked(album)")
@@ -28,4 +26,4 @@
 
 		pagination(ng-model="page", ng-hide="filteredAlbums.length===0", total-items="filteredAlbums.length", items-per-page="6" ng-init="page=1")
 
-		p(ng-show="albums.length===0") No results found.
+		p(ng-show="filteredAlbums.length===0") No results found.

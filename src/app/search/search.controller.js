@@ -1,8 +1,9 @@
 'use strict';
 
 angular.module('musicApp')
-    .controller('SearchController', ['$scope', '$window', 'SpotifyService', 'bookmarks', 
-        function($scope, $window, spotify, bookmarks) {
+
+.controller('SearchController', ['$scope', '$window', 'SpotifyService', 'bookmarks',
+    function($scope, $window, spotify, bookmarks) {
 
         $scope.search = function(query) {
             spotify.searchAlbums(query).then(function(albums) {
@@ -20,7 +21,6 @@ angular.module('musicApp')
         };
 
         $scope.isBookmarked = function(album) {
-            // return bookmarks.get(album) ? true : false;
             return bookmarks.has(album.id);
         };
 
@@ -31,4 +31,5 @@ angular.module('musicApp')
         $scope.query = $window.localStorage.query;
         $scope.search($scope.query);
 
-    }]);
+    }
+]);
