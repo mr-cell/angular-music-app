@@ -1,0 +1,3 @@
+.bookmark-stars
+	span.glyphicon.glyphicon-star(ng-show="isBookmarked(bookmark)", ng-click="removeBookmark(bookmark)")
+	span.glyphicon.glyphicon-star-empty(ng-show="!isBookmarked(bookmark)", ng-click="saveBookmark(bookmark)")

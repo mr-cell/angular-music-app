@@ -9,6 +9,6 @@ angular.module('bookmarks')
 	};
 
 	$scope.removeBookmark = function(album) {
-		bookmarks.remove(album);
+		bookmarks.remove(album.id);
 	};
 }]);

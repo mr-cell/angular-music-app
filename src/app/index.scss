@@ -5,6 +5,10 @@
   padding: 0.2em 0;
 }
 
+[ng-click] {
+  cursor: pointer;
+}
+
 .thumbnail {
   height: 200px;
 
@@ -22,8 +26,12 @@ body {
 }
 
 .table-unstyled th, .table-unstyled td { 
-     border-top: none !important; 
+  border-top: none !important; 
  }
+
+.bookmark-stars {
+  display: inline-block;    
+}
 
 /* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
    all your sass files automatically */

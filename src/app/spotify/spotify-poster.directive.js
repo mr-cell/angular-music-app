@@ -2,7 +2,7 @@
 
 angular.module('spotify')
 
-.directive('spotifyPoster', [function(){
+.directive('spotifyPoster', ['bookmarks', function(bookmarks) {
 	var sizes = {
 		sm: 2,
 		md: 1,
@@ -16,11 +16,15 @@ angular.module('spotify')
 		transclude: true,
 		scope: {
 			album : '=',
-			size: '@'
+			size: '@',
 		},
 		link: function(scope) {
 			var size = sizes[scope.size];
 			scope.src = scope.album.images[size].url;
+
+			scope.removeBookmark = function(album) {
+				bookmarks.remove(album.id);
+			};
 		}
 	};
 }]);

@@ -12,24 +12,11 @@ angular.module('musicApp')
             });
         };
 
-        $scope.saveBookmark = function(album) {
-            bookmarks.add(album);
-        };
-
-        $scope.removeBookmark = function(album) {
-            bookmarks.remove(album);
-        };
-
-        $scope.isBookmarked = function(album) {
-            return bookmarks.has(album.id);
-        };
-
         $scope.$watch('query', function() {
             $scope.search($scope.query);
         });
 
         $scope.query = $window.localStorage.query;
         $scope.search($scope.query);
-
     }
 ]);
