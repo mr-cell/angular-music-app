@@ -1,0 +1,10 @@
+div(ng-controller="BookmarksController")
+		h2 Favourites
+		table.table.table-condensed.table-responsive
+			thead
+			tbody
+				tr(ng-repeat="album in getBookmarks()")
+					td {{album.name}}
+					td
+						button.btn.btn-default.btn-xs(ng-click="removeBookmark(album.id)")
+							span.glyphicon.glyphicon-minus

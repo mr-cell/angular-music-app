@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('musicApp', ['ngAnimate', 'ngCookies', 'ngSanitize', 'ui.router', 'ui.bootstrap', 'spotify', 'common'])
+angular.module('musicApp', ['ngAnimate', 'ngCookies', 'ngSanitize', 'ui.router', 'ui.bootstrap', 'spotify', 'common', 'bookmarks'])
     .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('home', {

@@ -1,18 +1,31 @@
 .row
 	aside.col-md-4
-		h2 Favourites
+		ng-include(src="'app/bookmarks/bookmarks.html'")
 	main.col-md-8
 		h1 Search
 		form(ng-submit="search(query)")
 			.form-group
 				input.form-control(type="search", placeholder="Search...", ng-model="query", 
 					ng-model-options="{debounce: {default: 500, blur: 0}, updateOn: 'default blur'}")
+				.row.form-inline
+					.col-md-6
+						input(type="checkbox" ng-model="order", id="order")
+						label(for="order", ng-show="order") Sortuj malejąco
+						label(for="order", ng-hide="order") Sortuj rosnąco
+					.col-md-6.form-group
+						label Filtruj:
+						input.form-control(type="search", ng-model="filterQuery.name")
 
+		h4 {{filterQuery}}
 		ul.list-unstyled.row.albums
-			li.album.col-md-4(ng-repeat="album in albums | orderBy:'name' | paginate:page:6") 
+			li.album.col-md-4(ng-repeat="album in filteredAlbums = (albums | filter:filterQuery | orderBy:'name':order) | paginate:page:6", 
+				ng-click="isBookmarked(album) ? removeBookmark(album.id) : saveBookmark(album)") 
 				img.img-responsive.img-rounded(ng-src="{{album.images[1].url}}")
-				h4 {{album.name}}
+				h4
+					span.glyphicon.glyphicon-star(ng-show="isBookmarked(album)")
+					span.glyphicon.glyphicon-star-empty(ng-show="!isBookmarked(album)")
+					{{album.name}}
 
-		pagination(ng-model="page", ng-hide="albums.length===0", total-items="albums.length", items-per-page="6" ng-init="page=1")
+		pagination(ng-model="page", ng-hide="filteredAlbums.length===0", total-items="filteredAlbums.length", items-per-page="6" ng-init="page=1")
 
 		p(ng-show="albums.length===0") No results found.

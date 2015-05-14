@@ -21,6 +21,10 @@ body {
   clear: left;
 }
 
+.table th, .table td { 
+     border-top: none !important; 
+ }
+
 /* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
    all your sass files automatically */
 // injector
