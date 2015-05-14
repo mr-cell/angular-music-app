@@ -2,8 +2,8 @@
 
 angular.module('musicApp')
 
-.controller('SearchController', ['$scope', '$window', 'SpotifyService', 'bookmarks',
-    function($scope, $window, spotify, bookmarks) {
+.controller('SearchController', ['$scope', '$window', 'SpotifyService',
+    function($scope, $window, spotify) {
 
         $scope.search = function(query) {
             spotify.searchAlbums(query).then(function(albums) {

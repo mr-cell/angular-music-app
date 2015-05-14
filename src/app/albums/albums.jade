@@ -1,0 +1,3 @@
+.row
+	.col-md-3(ng-repeat="album in getAlbums()")
+		spotify-poster(album="album", size="md") {{album.name}}

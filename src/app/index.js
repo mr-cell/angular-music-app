@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('musicApp', ['ngAnimate', 'ngCookies', 'ngSanitize', 'ui.router', 'ui.bootstrap', 'spotify', 'common', 'bookmarks'])
+angular.module('musicApp', ['ngAnimate', 'ngCookies', 'ngSanitize', 'ui.router', 'ui.bootstrap', 'spotify', 'common', 'bookmarks', 'albums'])
     .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
             .state('home', {
@@ -12,6 +12,11 @@ angular.module('musicApp', ['ngAnimate', 'ngCookies', 'ngSanitize', 'ui.router',
                 url: '/search',
                 templateUrl: 'app/search/search.html',
                 controller: 'SearchController'
+            })
+            .state('albums', {
+                url: '/albums',
+                templateUrl: 'app/albums/albums.html',
+                controller: 'AlbumsController'
             });
 
         $urlRouterProvider.otherwise('/');
