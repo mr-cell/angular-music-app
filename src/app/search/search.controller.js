@@ -1,10 +1,11 @@
 'use strict';
 
 angular.module('musicApp')
-    .controller('SearchController', ['$scope', '$http', 'SpotifyService', function($scope, $http, spotify) {
+    .controller('SearchController', ['$scope', '$window', '$http', 'SpotifyService', function($scope, $window, $http, spotify) {
 
         $scope.search = function(query) {
         	spotify.searchAlbums(query).then(function(albums) {
+                $window.localStorage.query = query;
         		$scope.albums = albums;
         	});
         };
@@ -13,5 +14,7 @@ angular.module('musicApp')
         	$scope.search($scope.query);
         });
 
-        $scope.search('batman');
+        $scope.query = $window.localStorage.query;
+        $scope.search($scope.query);
+
     }]);

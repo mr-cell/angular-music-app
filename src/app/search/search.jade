@@ -13,6 +13,6 @@
 				img.img-responsive.img-rounded(ng-src="{{album.images[1].url}}")
 				h4 {{album.name}}
 
-		pagination(ng-model="page", total-items="albums.length", items-per-page="6" ng-init="page=1")
+		pagination(ng-model="page", ng-hide="albums.length===0", total-items="albums.length", items-per-page="6" ng-init="page=1")
 
 		p(ng-show="albums.length===0") No results found.
