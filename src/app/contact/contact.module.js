@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('contact', []);
+angular.module('contact', ['ngMessages']);
