@@ -40,7 +40,6 @@ angular.module('spotify', [])
         $http.get(albumUrl + albumId).then(function(response) {
             deferred.resolve(response.data);
         }, function(response) {
-            console.log(response);
             deferred.reject(response.data.error);
         });
 

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('albums', ['bookmarks', 'spotify'])
+angular.module('albums')
 
 .controller('AlbumsController', ['$scope', 'bookmarks', function($scope, bookmarks) {
 

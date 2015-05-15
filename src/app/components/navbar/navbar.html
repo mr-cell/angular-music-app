@@ -8,12 +8,13 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
       <ul class="nav navbar-nav">
-        <li ui-sref-active="active"><a ui-sref="search">Search</a></li>
-        <li ui-sref-active="active"><a ui-sref="albums">Albums</a></li>
+        <li ui-sref-active="active" ng-repeat="state in ::states">
+          <a ui-sref="{{ ::state.name }}">{{ ::state.label }}</a>
+        </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li>Current date: {{ date | date:'yyyy-MM-dd' }}</li>
+        <li>Current date: {{ ::date | date:'yyyy-MM-dd' }}</li>
       </ul>
     </div>
   </div>
