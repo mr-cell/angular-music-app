@@ -3,27 +3,36 @@ form.form-horizontal(novalidate="", name="contactForm")
 	.form-group(ng-class="contactForm.fullName.$valid ? 'has-success' : 'has-error'")
 		label.col-md-2.control-label(for="fullName") Full Name
 		.col-md-10
-			input.form-control#fullName(name="fullName", ng-model="fullName", required="", ng-minlength="3", placeholder="Full Name")
+			.input-group
+				.input-group-addon
+					i.glyphicon.glyphicon-user
+				input.form-control#fullName(name="fullName", ng-model="contact.fullName", required="", ng-minlength="3", placeholder="Full Name")
 			ng-messages.has-error(ng-show="contactForm.fullName.$dirty", for="contactForm.fullName.$error",
 				ng-messages-include="app/common/error.messages.html")
 	.form-group(ng-class="contactForm.email.$valid ? 'has-success' : 'has-error'")
 		label.col-md-2.control-label(for="email") E-mail
 		.col-md-10
-			input.form-control#email(type="email", name="email", ng-model="email", required="", placeholder="E-mail")
+			.input-group
+				.input-group-addon @
+				input.form-control#email(type="email", name="email", ng-model="contact.email", required="", placeholder="E-mail")
 			ng-messages.has-error(ng-show="contactForm.email.$dirty", for="contactForm.email.$error",
 				ng-messages-include="app/common/error.messages.html")
 	.form-group(ng-class="contactForm.phoneNumber.$valid ? 'has-success' : 'has-error'")
 		label.col-md-2.control-label(for="phoneNumber") Phone Number
 		.col-md-10
-			input.form-control#phoneNumber(name="phoneNumber", ng-model="phoneNumber", ng-minlength="8", placeholder="Phone number")
+			.input-group
+				.input-group-addon 
+					i.glyphicon.glyphicon-phone-alt
+				input.form-control#phoneNumber(name="phoneNumber", ng-model="contact.phoneNumber", ng-minlength="8", placeholder="Phone number")
 			ng-messages.has-error(ng-show="contactForm.phoneNumber.$dirty", for="contactForm.phoneNumber.$error")
 				ng-message.help-block(when="minlength") Your phone number is too short.
 	.form-group(ng-class="contactForm.message.$valid ? 'has-success' : 'has-error'")
 		label.col-md-2.control-label(for="message") Message
 		.col-md-10
-			textarea.form-control#message(name="message", ng-model="message", ng-minlength="5", required="", placeholder="Message...")
+			textarea.form-control#message(name="message", ng-model="contact.message", ng-minlength="5", required="", 
+				placeholder="Message...", rows="3")
 			ng-messages.has-error(ng-show="contactForm.message.$dirty", for="contactForm.message.$error",
 				ng-messages-include="app/common/error.messages.html")
 	.form-group
 		.col-md-offset-2.col-md-10
-			button.btn.btn-primary(type="submit", ng-disabled="contactForm.$invalid") Send
+			button.btn.btn-primary(type="submit", ng-disabled="contactForm.$invalid", ng-click="send()") Send
