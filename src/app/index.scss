@@ -1,40 +1,77 @@
 .browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
 }
 
 [ng-click] {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .thumbnail {
-  height: 200px;
-
-  img.pull-right {
-    width: 50px;
-  }
+    height: 200px;
+    img.pull-right {
+        width: 50px;
+    }
 }
 
 body {
-	background: #bada55;
-  overflow-y: scroll;
+    background: #bada55;
+    overflow-y: scroll;
 }
 
-.album:nth-child(3n+1) {
-  clear: left;
+.album {
+    transition: all 1s;
+    &:nth-child(3n+1) {
+        clear: left;
+    }
+    &.ng-enter {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    &.ng-enter-active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    &.ng-leave {
+        transition: all 0s;
+    }
+    &.ng-enter-stagger {
+        transition-delay: 70ms;
+        transition-duration: 0s;
+    }
 }
 
-.table-unstyled th, .table-unstyled td { 
-  border-top: none !important; 
- }
+.table-unstyled th,
+.table-unstyled td {
+    border-top: none !important;
+}
 
 .bookmark-stars {
-  display: inline-block;    
+    display: inline-block;
 }
 
+.bookmark {
+    transition: all 400ms;
+    &.ng-leave {
+      opacity: 1;
+      transform: translateX(0) scale(1) rotate(0deg);
+    }
+    &.ng-leave-active {
+      opacity: 0;
+      transform: translateX(-200px) scale(0) rotate(-90deg);
+    }
+    &.ng-enter {
+      transition: all 400ms cubic-bezier(0.64, 0.57, 0.67, 1.53);
+      transform: scale(0);
+    }
+    &.ng-enter-active {
+      transform: scale(1);
+    }
+}
 /* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
    all your sass files automatically */
+
 // injector
 // endinjector

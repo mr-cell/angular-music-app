@@ -1,5 +1,5 @@
 div(ng-controller="BookmarksController")
 		h2 Favourites
 		.row
-			.col-md-6(ng-repeat="bookmark in getBookmarks()")
+			.col-md-6.bookmark(ng-repeat="bookmark in getBookmarks()")
 				spotify-poster(size="sm", album="bookmark") {{bookmark.name}}
