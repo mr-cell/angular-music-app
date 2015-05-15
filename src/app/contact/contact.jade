@@ -7,6 +7,8 @@ form.form-horizontal(novalidate="", name="contactForm")
 				.input-group-addon
 					i.glyphicon.glyphicon-user
 				input.form-control#fullName(name="fullName", ng-model="contact.fullName", required="", ng-minlength="3", placeholder="Full Name")
+				.glyphicon.glyphicon-ok.form-control-feedback(aria-hidden="true", ng-show="contactForm.fullName.$valid")
+				.glyphicon.glyphicon-remove.form-control-feedback(aria-hidden="true", ng-show="contactForm.fullName.$invalid")
 			ng-messages.has-error(ng-show="contactForm.fullName.$dirty", for="contactForm.fullName.$error",
 				ng-messages-include="app/common/error.messages.html")
 	.form-group(ng-class="contactForm.email.$valid ? 'has-success' : 'has-error'")
@@ -15,6 +17,8 @@ form.form-horizontal(novalidate="", name="contactForm")
 			.input-group
 				.input-group-addon @
 				input.form-control#email(type="email", name="email", ng-model="contact.email", required="", placeholder="E-mail")
+				.glyphicon.glyphicon-ok.form-control-feedback(aria-hidden="true", ng-show="contactForm.email.$valid")
+				.glyphicon.glyphicon-remove.form-control-feedback(aria-hidden="true", ng-show="contactForm.email.$invalid") 
 			ng-messages.has-error(ng-show="contactForm.email.$dirty", for="contactForm.email.$error",
 				ng-messages-include="app/common/error.messages.html")
 	.form-group(ng-class="contactForm.phoneNumber.$valid ? 'has-success' : 'has-error'")
@@ -24,6 +28,8 @@ form.form-horizontal(novalidate="", name="contactForm")
 				.input-group-addon 
 					i.glyphicon.glyphicon-phone-alt
 				input.form-control#phoneNumber(name="phoneNumber", ng-model="contact.phoneNumber", ng-minlength="8", placeholder="Phone number")
+				.glyphicon.glyphicon-ok.form-control-feedback(aria-hidden="true", ng-show="contactForm.phoneNumber.$valid")
+				.glyphicon.glyphicon-remove.form-control-feedback(aria-hidden="true", ng-show="contactForm.phoneNumber.$invalid") 
 			ng-messages.has-error(ng-show="contactForm.phoneNumber.$dirty", for="contactForm.phoneNumber.$error")
 				ng-message.help-block(when="minlength") Your phone number is too short.
 	.form-group(ng-class="contactForm.message.$valid ? 'has-success' : 'has-error'")

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('spotify', [])
+angular.module('spotify')
 
 .service('SpotifyService', ['$http', '$q', '$window', function($http, $q, $window) {
 
