@@ -1,3 +1,32 @@
 h1 Contact
-	form(novalidate, name="contactForm")
-		button.bt.btn-primary(type="submit", ng-disabled="contactForm.$invalid")
+form.form-horizontal(novalidate="", name="contactForm")
+	.form-group
+		label.col-md-2.control-label(for="fullName") Full Name
+		.col-md-10
+			input.form-control#fullName(name="fullName", ng-model="fullName", required="", ng-minlength="3", placeholder="Full Name")
+			.has-error(ng-show="contactForm.fullName.$dirty")
+				p.help-block(ng-show="contactForm.fullName.$error.required") Your name is required.
+				p.help-block(ng-show="contactForm.fullName.$error.minlength") Your name is too short.
+	.form-group
+		label.col-md-2.control-label(for="email") E-mail
+		.col-md-10
+			input.form-control#email(type="email", name="email", ng-model="email", required="", placeholder="E-mail")
+			.has-error(ng-show="contactForm.email.$dirty")
+				p.help-block(ng-show="contactForm.email.$error.required") Your e-mail is required.
+				p.help-block(ng-show="contactForm.email.$error.email") Your e-mail does not conform to the standard e-mail format.
+	.form-group
+		label.col-md-2.control-label(for="phoneNumber") Phone Number
+		.col-md-10
+			input.form-control#phoneNumber(name="phoneNumber", ng-model="phoneNumber", ng-minlength="8", placeholder="Phone number")
+			.has-error(ng-show="contactForm.phoneNumber.$dirty")
+				p.help-block(ng-show="contactForm.phoneNumber.$error.minlength") Your phone number is too short.
+	.form-group
+		label.col-md-2.control-label(for="message") Message
+		.col-md-10
+			textarea.form-control#message(name="message", ng-model="message", ng-minlength="5", required="", placeholder="Message...")
+			.has-error(ng-show="contactForm.message.$dirty")
+				p.help-block(ng-show="contactForm.message.$error.required") Your message is required.
+				p.help-block(ng-show="contactForm.message.$error.minlength") Your message is too short.
+	.form-group
+		.col-md-offset-2.col-md-10
+			button.btn.btn-primary(type="submit", ng-disabled="contactForm.$invalid") Send
