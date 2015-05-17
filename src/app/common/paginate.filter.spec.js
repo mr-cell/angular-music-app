@@ -24,11 +24,11 @@ describe('paginate filter', function() {
 	});
 
 	it('returns n items', function() {
-		
+
 		var result3Items = $filter(array, 1, 3);
 		var result5Items = $filter(array, 1, 5);
 		var result4Items = $filter(array, 2, 4);
-		
+
 		expect(result3Items.length).toBe(3);
 		expect(result5Items.length).toBe(5);
 		expect(result4Items.length).toBe(4);
